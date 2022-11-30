@@ -14,12 +14,20 @@ const FILE_DIR_USER_AVATAR = "user/avatar/";
 
 export default {
     storagePrefix: BASE_URL_STORAGE,
-    imageStoragePrefix: FILE_DIR_IMAGE,
+    imageStoragePrefix: `${BASE_URL_STORAGE}${FILE_DIR_IMAGE}`,
     courseImageStoragePrefix: `${BASE_URL_STORAGE}${FILE_DIR_COURSE_IMAGE}`,
     lessonImageStoragePrefix: `${BASE_URL_STORAGE}${FILE_DIR_LESSON_IMAGE}`,
     lessonUploadStoragePrefix: `${BASE_URL_STORAGE}${FILE_DIR_LESSON_UPLOAD}`,
     assignmentImageStoragePrefix: `${BASE_URL_STORAGE}${FILE_DIR_ASSIGNMENT_IMAGE}`,
     assignmentUploadStoragePrefix: `${BASE_URL_STORAGE}${FILE_DIR_ASSIGNMENT_UPLOAD}`,
-    userAvatarStoragePrefix: `${BASE_URL_STORAGE}${FILE_DIR_USER_AVATAR}`
+    userAvatarStoragePrefix: `${BASE_URL_STORAGE}${FILE_DIR_USER_AVATAR}`,
+
+    imageStorageDir: FILE_DIR_IMAGE,
+    courseImageStorageDir: FILE_DIR_COURSE_IMAGE,
+    lessonImageStorageDir: FILE_DIR_LESSON_IMAGE,
+    lessonUploadStorageDir: FILE_DIR_LESSON_UPLOAD,
+    assignmentImageStorageDir: FILE_DIR_ASSIGNMENT_IMAGE,
+    assignmentUploadStorageDir: FILE_DIR_ASSIGNMENT_UPLOAD,
+    userAvatarStorageDir: FILE_DIR_USER_AVATAR,
 
 };

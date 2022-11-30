@@ -3,6 +3,7 @@ import {get, post} from "./Requester";
 
 const MAX_UPLOAD_FILE_SIZE = 10 * 1024 * 1024;
 
+// APIs related to file upload and download
 
 function getGetObjectSignedUrl(dir, hashedFileName){
     return get('/s3/getGetObjectSignedUrl')({
@@ -33,9 +34,9 @@ export function getFileFromS3(dir, hashedFileName){
 }
 
 
-export function uploadFileToS3(dir, fileName, fileUrl, fileType){
+export function uploadFileToS3(dir, fileName, fileUrl, fileType, fileSize){
     return new Promise(async (resolve, reject) => {
-        if(file.size > MAX_UPLOAD_FILE_SIZE){
+        if(fileSize > MAX_UPLOAD_FILE_SIZE){
             reject("File Too Large");
         }
         const fileHash = await RNFS.hash(fileUrl, 'sha256');
@@ -51,7 +52,7 @@ export function uploadFileToS3(dir, fileName, fileUrl, fileType){
             method: "PUT",
             body: fileBlob,
             headers: {
-                "Content-type": file.type
+                "Content-type": fileType
             }
         });
         console.log(res);

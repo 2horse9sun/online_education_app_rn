@@ -9,9 +9,11 @@ const BASE_URL_LOCALHOST = `${PROTOCOL_HTTP}${HOSTNAME_LOCALHOST}:${PORT}${API_P
 const APP_RUNNER_DOMAIN = "https://ag8mpmgcxn.eu-west-1.awsapprunner.com"
 const BASE_URL_APP_RUNNER = `${APP_RUNNER_DOMAIN}${API_PREFIX}`;
 
-// local env or production env
-const BASE_URL = BASE_URL_LOCALHOST;
-// const BASE_URL = BASE_URL_APP_RUNNER;
+
+//===================================================================
+// const BASE_URL = BASE_URL_LOCALHOST;        // if backend run on localhost
+const BASE_URL = BASE_URL_APP_RUNNER;    // if backend run on AWS
+//===================================================================
 
 
 // API routes

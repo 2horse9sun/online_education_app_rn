@@ -15,4 +15,3 @@ export default class App extends Component<Props> {
     }
 }
 
-export default App;
