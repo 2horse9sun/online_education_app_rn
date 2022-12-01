@@ -8,13 +8,13 @@ import { Appbar, Avatar } from 'react-native-paper';
  *
  */
 
-const AppStackHeader = ({ navigation, back, options }) => {
+const AppStackHeader = ({ navigation, back, options, route }) => {
 
     const title = options.headerTitle
         ? options.headerTitle
         : options.title !== undefined
             ? options.title
-            : 'asas';
+            : route;
 
     return (
         <Appbar.Header>
