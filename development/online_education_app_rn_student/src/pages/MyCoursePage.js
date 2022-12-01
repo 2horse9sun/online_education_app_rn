@@ -34,7 +34,9 @@ class MyCoursePage extends Component<Props> {
         return (
             <View style={styles.container}>
                 {this.renderTopBar()}
-                <Button icon="camera" mode="contained" onPress={() => this.props.navigation.navigate('CourseDetailPage')}>
+                <Button icon="camera" mode="contained" 
+                    onPress={() => this.props.navigation.push('CourseDetailPage')}
+                >
                     Test Navigation
                 </Button>
             </View>
