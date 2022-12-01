@@ -7,7 +7,8 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import { formatDate } from '../utils/DateUtil';
 import DocumentPicker from 'react-native-document-picker';
 import { addCourse, getCourseListByStudentId, getAllCourseListByStudentId, getCourseDetailByCourseId } from '../dao/CourseDao';
-
+import { getAllAssignmentListByStudentIdAndCourseId, getAssignmentDetailByStudentIdAndAssignmentId, getAllRecentAssignmentListByStudentId, getAllAssignmentListByStudentId, addAssignment  } from '../dao/AssignmentDao';
+import { getAllLessonListByCourseId, getLessonDetailByLessonId, addLesson } from '../dao/LessonDao';
 
 
 type Props = {};
@@ -89,6 +90,90 @@ class MyMessagePage extends Component<Props> {
 
     }
 
+    async testGetAllAssignmentListByStudentIdAndCourseId(){
+        let user_info = await AsyncStorage.getItem("user_info");
+        user_info = JSON.parse(user_info);
+
+        const student_id = user_info.student_id;
+        const course_id = 1;
+        const res = await getAllAssignmentListByStudentIdAndCourseId(student_id, course_id);
+        console.log(res);
+    }
+
+    async testGetAssignmentDetailByStudentIdAndAssignmentId(){
+        let user_info = await AsyncStorage.getItem("user_info");
+        user_info = JSON.parse(user_info);
+
+        const student_id = user_info.student_id;
+        const assignment_id = 1;
+        const res = await getAssignmentDetailByStudentIdAndAssignmentId(student_id, assignment_id);
+        console.log(res);
+    }
+
+    async testGetAllRecentAssignmentListByStudentId(){
+        let user_info = await AsyncStorage.getItem("user_info");
+        user_info = JSON.parse(user_info);
+
+        const student_id = user_info.student_id;
+        const res = await getAllRecentAssignmentListByStudentId(student_id);
+        console.log(res);
+    }
+
+    async testGetAllAssignmentListByStudentId(){
+        let user_info = await AsyncStorage.getItem("user_info");
+        user_info = JSON.parse(user_info);
+
+        const student_id = user_info.student_id;
+        const res = await getAllAssignmentListByStudentId(student_id);
+        console.log(res);
+    }
+
+    async testAddAssignment(){
+        const assignmentData = {
+            title: "Problem Set 5: Memory Consistency and Cache Coherence",
+            content: {
+                description: `For this problem we will be using the following sequences of instructions. These are small programs, each executed on a different processor, each with its own cache and register set. In the following R is a register and X is a memory location. Each instruction has been named (e.g., B3) to make it easy to write answers.`
+            },
+            course_id: 1,
+            owner_user_id: 3,
+            due_time: new Date(Date.now()).toISOString(),
+            release_time: new Date(Date.now()).toISOString()
+        }
+
+        let assignmentFiles = this.state.files;
+        let res = await addAssignment(assignmentData.title, assignmentData.content, assignmentData.course_id, assignmentData.owner_user_id, assignmentData.due_time, assignmentData.release_time, assignmentFiles);
+        console.log(res);
+    }
+
+    async testGetAllLessonListByCourseId(){
+        const course_id = 1;
+        const res = await getAllLessonListByCourseId(course_id);
+        console.log(res);
+    }
+
+    async testGetLessonDetailByLessonId(){
+        const lesson_id = 1;
+        const res = await getLessonDetailByLessonId(lesson_id);
+        console.log(res);
+    }
+
+    async testAddLesson(){
+        const lessonData = {
+            name: "Lecture 4 Pipelining Part II",
+            content: {
+                introduction: `Lecture 4 Pipelining Part II`
+            },
+            course_id: 1,
+            teacher_id: 3,
+            release_time: new Date(Date.now()).toISOString()
+        }
+
+        let lessonFiles = this.state.files;
+        let res = await addLesson(lessonData.name, lessonData.content, lessonData.course_id, lessonData.teacher_id, lessonData.release_time, lessonFiles);
+        console.log(res);
+    }
+
+
 
 
     renderTopBar(){
@@ -122,7 +207,7 @@ class MyMessagePage extends Component<Props> {
                 <Appbar.Header>
                     <Appbar.Content title="API test"/>
                 </Appbar.Header>
-                <View style={{width: "70%", alignSelf: "center", marginVertical: 20, marginHorizontal: 20}}>
+                <View style={{width: "80%", alignSelf: "center", marginVertical: 10, marginHorizontal: 20}}>
                     <Button icon="plus" mode="contained" onPress={() => this.addFile()}>
                         Add File
                     </Button>
@@ -135,24 +220,64 @@ class MyMessagePage extends Component<Props> {
     renderListFooter(){
         return (
             <View style={styles.container}>
-                <View style={{width: "70%", alignSelf: "center", marginVertical: 20, marginHorizontal: 20}}>
+                <View style={{width: "80%", alignSelf: "center", marginVertical: 10, marginHorizontal: 20}}>
                     <Button icon="upload" mode="contained" onPress={() => this.testGetCourseListByStudentId()}>
                         getCourseListByStudentId
                     </Button>
                 </View>
-                <View style={{width: "70%", alignSelf: "center", marginVertical: 20, marginHorizontal: 20}}>
+                <View style={{width: "80%", alignSelf: "center", marginVertical: 10, marginHorizontal: 20}}>
                     <Button icon="upload" mode="contained" onPress={() => this.testGetAllCourseListByStudentId()}>
                         getAllCourseListByStudentId
                     </Button>
                 </View>
-                <View style={{width: "70%", alignSelf: "center", marginVertical: 20, marginHorizontal: 20}}>
+                <View style={{width: "80%", alignSelf: "center", marginVertical: 10, marginHorizontal: 20}}>
                     <Button icon="upload" mode="contained" onPress={() => this.testGetCourseDetailByCourseId()}>
                         getCourseDetailByCourseId
                     </Button>
                 </View>
-                <View style={{width: "70%", alignSelf: "center", marginVertical: 20, marginHorizontal: 20}}>
+                <View style={{width: "80%", alignSelf: "center", marginVertical: 10, marginHorizontal: 20}}>
                     <Button icon="upload" mode="contained" onPress={() => this.testAddCourse()}>
                         addCourse
+                    </Button>
+                </View>
+                <View style={{width: "80%", alignSelf: "center", marginVertical: 10, marginHorizontal: 20}}>
+                    <Button icon="upload" mode="contained" onPress={() => this.testGetAllAssignmentListByStudentIdAndCourseId()}>
+                    getAllAssignmentListByStudentIdAndCourseId
+                    </Button>
+                </View>
+                <View style={{width: "80%", alignSelf: "center", marginVertical: 10, marginHorizontal: 20}}>
+                    <Button icon="upload" mode="contained" onPress={() => this.testGetAssignmentDetailByStudentIdAndAssignmentId()}>
+                    getAssignmentDetailByStudentIdAndAssignmentId
+                    </Button>
+                </View>
+                <View style={{width: "80%", alignSelf: "center", marginVertical: 10, marginHorizontal: 20}}>
+                    <Button icon="upload" mode="contained" onPress={() => this.testGetAllRecentAssignmentListByStudentId()}>
+                    getAllRecentAssignmentListByStudentId
+                    </Button>
+                </View>
+                <View style={{width: "80%", alignSelf: "center", marginVertical: 10, marginHorizontal: 20}}>
+                    <Button icon="upload" mode="contained" onPress={() => this.testGetAllAssignmentListByStudentId()}>
+                    getAllAssignmentListByStudentId
+                    </Button>
+                </View>
+                <View style={{width: "80%", alignSelf: "center", marginVertical: 10, marginHorizontal: 20}}>
+                    <Button icon="upload" mode="contained" onPress={() => this.testAddAssignment()}>
+                    addAssignment
+                    </Button>
+                </View>
+                <View style={{width: "80%", alignSelf: "center", marginVertical: 10, marginHorizontal: 20}}>
+                    <Button icon="upload" mode="contained" onPress={() => this.testGetAllLessonListByCourseId()}>
+                    getAllLessonListByCourseId
+                    </Button>
+                </View>
+                <View style={{width: "80%", alignSelf: "center", marginVertical: 10, marginHorizontal: 20}}>
+                    <Button icon="upload" mode="contained" onPress={() => this.testGetLessonDetailByLessonId()}>
+                    getLessonDetailByLessonId
+                    </Button>
+                </View>
+                <View style={{width: "80%", alignSelf: "center", marginVertical: 10, marginHorizontal: 20}}>
+                    <Button icon="upload" mode="contained" onPress={() => this.testAddLesson()}>
+                    addLesson
                     </Button>
                 </View>
             </View>

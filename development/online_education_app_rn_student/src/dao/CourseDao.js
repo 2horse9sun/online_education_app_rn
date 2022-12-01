@@ -15,6 +15,7 @@ function buildCourseImageStorageUrl(name){
     return courseImageStoragePrefix + name;
 }
 
+
 export async function getCourseListByStudentId(student_id, page_size, page_number) {
     let res = await get(courseAPIPrefix + '/getCourseListByStudentId')({
         student_id,
