@@ -8,7 +8,16 @@ import { formatDate } from '../utils/DateUtil';
 
 
 
-type Props = {};
+const CourseDetailPage = () => {
+
+    return (
+        <View>
+            <Text>TODO! COURSE INFORMATION</Text>
+        </View>
+    )
+}
+
+/* type Props = {};
 
 class CourseDetailPage extends Component<Props> {
     constructor(props) {
@@ -34,11 +43,10 @@ class CourseDetailPage extends Component<Props> {
         return (
             <View style={styles.container}>
                 {this.renderTopBar()}
-
             </View>
         );
     }
-}
+} */
 
 
 const styles = StyleSheet.create({
