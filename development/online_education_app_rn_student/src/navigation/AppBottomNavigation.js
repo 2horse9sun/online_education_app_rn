@@ -5,7 +5,6 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import MyCoursePage from '../pages/MyCoursePage';
 import MyAssignmentPage from '../pages/MyAssignmentPage';
 import MyMessagePage from '../pages/MyMessagePage';
-import MyExamPage from '../pages/MyExamPage';
 import MyProfilePage from '../pages/MyProfile';
 const Tab = createMaterialBottomTabNavigator();
 
@@ -53,16 +52,6 @@ class AppBottomNavigation extends Component<Props> {
                 tabBarLabel: 'Message',
                 tabBarIcon: ({ color }) => (
                   <Entypo name="typing" color={color} size={26} />
-                ),
-              }}
-            />
-            <Tab.Screen
-              name="MyExamPage"
-              component={MyExamPage}
-              options={{
-                tabBarLabel: 'Exam',
-                tabBarIcon: ({ color }) => (
-                  <Entypo name="graduation-cap" color={color} size={26} />
                 ),
               }}
             />
