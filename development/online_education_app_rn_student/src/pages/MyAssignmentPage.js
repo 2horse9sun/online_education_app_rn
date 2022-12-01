@@ -5,38 +5,16 @@ import { Card, Title, Paragraph, ProgressBar, Colors, Button, DefaultTheme, Snac
 import { truncate } from '../utils/StringUtil';
 import Entypo from 'react-native-vector-icons/Entypo';
 import { formatDate } from '../utils/DateUtil';
+import AppbarHeader from '../components/AppbarHeader';
 
 
+const MyAssignmentPage = () => {
 
-type Props = {};
-
-class MyAssignmentPage extends Component<Props> {
-    constructor(props) {
-        super(props);
-
-    }
-
-    async componentDidMount(){
-
-    }
-
-    renderTopBar(){
-        return (
-            <Appbar.Header>
-                <Appbar.Content title="My Assignments" subtitle={'Subtitle'} />
-                <Appbar.Action icon="magnify" onPress={() => {}} />
-            </Appbar.Header>
-        );
-    }
-
-
-    render() {
-        return (
-            <View style={styles.container}>
-                {this.renderTopBar()}
-            </View>
-        );
-    }
+    return (
+        <View style={styles.container}>
+            <AppbarHeader title="My Assignments" />
+        </View>
+    )
 }
 
 

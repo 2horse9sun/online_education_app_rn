@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Appbar } from 'react-native-paper';
+import AppbarHeader from '../components/AppbarHeader';
 
 
 
@@ -8,10 +9,7 @@ const MyProfilePage = () => {
 
     return (
         <View style={styles.container}>
-            <Appbar.Header>
-                <Appbar.Content title="Profile" subtitle={'Subtitle'} />
-                <Appbar.Action icon="magnify" onPress={() => { }} />
-            </Appbar.Header>
+            <AppbarHeader title="Profile" />
         </View>
     );
 };
