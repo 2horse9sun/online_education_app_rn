@@ -5,44 +5,22 @@ import { Card, Title, Paragraph, ProgressBar, Colors, Button, DefaultTheme, Snac
 import { truncate } from '../utils/StringUtil';
 import Entypo from 'react-native-vector-icons/Entypo';
 import { formatDate } from '../utils/DateUtil';
+import AppbarHeader from '../components/AppbarHeader';
 
 
+const MyCoursePage = ({navigation}) => {
 
-type Props = {};
-
-class MyCoursePage extends Component<Props> {
-    constructor(props) {
-        super(props);
-
-    }
-
-    async componentDidMount(){
-
-    }
-
-    renderTopBar(){
-        return (
-            <Appbar.Header>
-                <Appbar.Content title="My Courses" subtitle={'Subtitle'} />
-                <Appbar.Action icon="magnify" onPress={() => {}} />
-            </Appbar.Header>
-        );
-    }
-
-
-    render() {
-        return (
-            <View style={styles.container}>
-                {this.renderTopBar()}
+    return (
+        <View style={styles.container}>
+                <AppbarHeader title="My Courses" />
                 <Button icon="camera" mode="contained" 
-                    onPress={() => this.props.navigation.push('CourseDetailPage')}
+                    onPress={() => navigation.push('CourseDetailPage')}
                 >
                     Test Navigation
                 </Button>
             </View>
-        );
-    }
-}
+    )
+};
 
 
 const styles = StyleSheet.create({
