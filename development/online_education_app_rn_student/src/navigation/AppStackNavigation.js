@@ -1,13 +1,39 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import SplashPage from '../pages/SplashPage';
 import BasePage from '../pages/BasePage';
 import CourseDetailPage from '../pages/CourseDetailPage';
 
 const Stack = createStackNavigator();
 
-type Props = {};
+const AppStackNavigation = () => {
+
+    return (
+        <Stack.Navigator
+            initialRouteName="BasePage"
+            screenOptions={{
+                headerShown: false
+            }}
+        >
+            <Stack.Screen
+                name="BasePage"
+                component={BasePage}
+                options={{
+                    headerShown: false
+                }}
+            />
+            <Stack.Screen
+                name="CourseDetailPage"
+                component={CourseDetailPage}
+                options={{
+                    headerShown: false
+                }}
+            />
+        </Stack.Navigator>
+    )
+}
+
+/* type Props = {};
 
 class AppStackNavigation extends Component<Props> {
     constructor(props) {
@@ -46,6 +72,6 @@ class AppStackNavigation extends Component<Props> {
         </Stack.Navigator>
       );
     }
-}
+} */
 
 export default AppStackNavigation;
