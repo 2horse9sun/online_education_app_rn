@@ -30,18 +30,11 @@ const MyCoursePage = ({ navigation }) => {
         fetchData();
     }, []);
 
-    const onChangeSearch = query => setSearchQuery(query);
-
-    //console.log('\n\n', courses);
+    const onChangeSearch = query => setSearchQuery(query.toLowerCase());
 
     return (
         <View style={styles.container}>
             <AppbarHeader title="My Courses" />
-            {/* <Button icon="camera" mode="contained" 
-                    onPress={() => navigation.push('CourseDetailPage')}
-                >
-                    Test Navigation
-                </Button> */}
 
             {/* Search bar */}
             <View style={{ paddingBottom: 20}}>
@@ -71,7 +64,10 @@ const MyCoursePage = ({ navigation }) => {
             <ScrollView>
                 {
                     courses && courses.map( props => {
-                        return <CourseCard key={props.id} {...props} navigation={navigation}/>
+                        if (props.name.toLowerCase().includes(searchQuery)){
+                            return <CourseCard key={props.id} {...props} navigation={navigation}/>
+                        }
+                        return <View/>
                     })
                 }
             </ScrollView>
