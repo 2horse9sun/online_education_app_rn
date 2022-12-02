@@ -54,7 +54,7 @@ const MyCoursePage = ({ navigation }) => {
                 <Button 
                     icon="plus"
                     mode="text"
-                    onPress={() => console.log('pressed')}
+                    onPress={() => navigation.push('NewCoursePage')}
                 >
                     Add New Course
                 </Button>

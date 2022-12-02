@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import BasePage from '../pages/BasePage';
 import CourseDetailPage from '../pages/CourseDetailPage';
 import AppStackHeader from './AppStackHeader';
+import NewCoursePage from '../pages/NewCoursePage';
 
 /**
  * Navigation between Course page and individual course detail page
@@ -33,6 +34,11 @@ const AppStackNavigation = () => {
                 name="CourseDetailPage"
                 component={CourseDetailPage}
                 options={{ headerTitle: 'Course Details'}}
+            />
+            <Stack.Screen
+                name="NewCoursePage"
+                component={NewCoursePage}
+                options={{ headerTitle: 'Back'}}
             />
         </Stack.Navigator>
     )
