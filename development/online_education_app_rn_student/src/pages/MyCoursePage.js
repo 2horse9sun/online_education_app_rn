@@ -70,8 +70,8 @@ const MyCoursePage = ({ navigation }) => {
             {/* Course cards */}
             <ScrollView>
                 {
-                    courses.map( props => {
-                        return <CourseCard key={props.id} {...props} />
+                    courses && courses.map( props => {
+                        return <CourseCard key={props.id} {...props} navigation={navigation}/>
                     })
                 }
             </ScrollView>

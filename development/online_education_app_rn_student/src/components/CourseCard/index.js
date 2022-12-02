@@ -1,26 +1,36 @@
 import React from 'react';
-import { Surface, Text } from 'react-native-paper';
-import { StyleSheet, View} from 'react-native';
+import { Surface, Text, TouchableRipple } from 'react-native-paper';
+import { StyleSheet, View, TouchableOpacity } from 'react-native';
 
-const CourseCard = ({name}) => {
-
+const CourseCard = (props) => {
+    
     return (
         <View style={styles.container}>
-            <Surface elevation={1} style={styles.card}>
+            <Surface
+                elevation={1}
+                style={styles.card}
+            >
+                <TouchableRipple
+                    onPress={() => props.navigation.push('CourseDetailPage', {
+                        id: props.id
+                    })}
+                >
 
-                <View style={styles.cardContainer}>
+                    <View style={styles.cardContainer}>
 
-                    {/* Name of the course */}
-                    <View style={styles.titleContainer}>
-                        <Text variant="titleMedium">{name}</Text>
+                        {/* Name of the course */}
+                        <View style={styles.titleContainer}>
+                            <Text variant="titleMedium">{props.name}</Text>
+                        </View>
+
+
+                        {/* Other */}
+                        <View style={styles.imageContainer} />
                     </View>
-
-                    {/* Other */}
-                    <View style={styles.imageContainer} />
-                </View>
-
+                </TouchableRipple>
             </Surface>
-        </View>
+
+        </View >
     );
 }
 

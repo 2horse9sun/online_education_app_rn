@@ -8,14 +8,15 @@ import { formatDate } from '../utils/DateUtil';
 
 
 
-const CourseDetailPage = () => {
-
+const CourseDetailPage = ({route, navigation}) => {
+    const { id } = route.params;
+    
     return (
         <View>
             <Text>TODO! COURSE INFORMATION</Text>
         </View>
-    )
-}
+    );
+};
 
 
 const styles = StyleSheet.create({
