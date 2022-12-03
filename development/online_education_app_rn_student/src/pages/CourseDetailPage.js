@@ -54,6 +54,7 @@ const CourseDetailPage = ({ route, navigation }) => {
             <View style={{ paddingTop: 10, paddingBottom: 15}}>
                 <Button mode="outlined" icon="chevron-right"
                     contentStyle={{ flexDirection: 'row-reverse' }}
+                    onPress={() => navigation.navigate('CourseAssignmentPage', {courseId: id, isInProgress: true})}
                 >
                     In Progress
                 </Button>
@@ -62,6 +63,7 @@ const CourseDetailPage = ({ route, navigation }) => {
             <View style={{ paddingBottom: 30}}>
                 <Button mode="outlined" icon="chevron-right"
                     contentStyle={{ flexDirection: 'row-reverse' }}
+                    onPress={() => navigation.navigate('CourseAssignmentPage', {courseId: id, isInProgress: false})}
                 >
                     Completed
                 </Button>

@@ -5,6 +5,7 @@ import BasePage from '../pages/BasePage';
 import CourseDetailPage from '../pages/CourseDetailPage';
 import AppStackHeader from './AppStackHeader';
 import NewCoursePage from '../pages/NewCoursePage';
+import CourseAssignmentPage from '../pages/CourseAssignmentPage';
 
 /**
  * Navigation between Course page and individual course detail page
@@ -39,6 +40,11 @@ const AppStackNavigation = () => {
                 name="NewCoursePage"
                 component={NewCoursePage}
                 options={{ headerTitle: 'Back'}}
+            />
+            <Stack.Screen
+                name="CourseAssignmentPage"
+                component={CourseAssignmentPage}
+                options={{ headerTitle: 'Assignments'}}
             />
         </Stack.Navigator>
     )
