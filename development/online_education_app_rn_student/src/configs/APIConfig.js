@@ -9,10 +9,15 @@ const BASE_URL_LOCALHOST = `${PROTOCOL_HTTP}${HOSTNAME_LOCALHOST}:${PORT}${API_P
 const APP_RUNNER_DOMAIN = "https://ag8mpmgcxn.eu-west-1.awsapprunner.com"
 const BASE_URL_APP_RUNNER = `${APP_RUNNER_DOMAIN}${API_PREFIX}`;
 
+// AWS EC2
+const EC2_HOSTNAME = "ec2-34-245-23-103.eu-west-1.compute.amazonaws.com";
+const BASE_URL_EC2 = `${PROTOCOL_HTTP}${EC2_HOSTNAME}:${PORT}${API_PREFIX}`;
+
 
 //===================================================================
 // const BASE_URL = BASE_URL_LOCALHOST;        // if backend run on localhost
-const BASE_URL = BASE_URL_APP_RUNNER;    // if backend run on AWS
+// const BASE_URL = BASE_URL_APP_RUNNER;    // if backend run on AWS APP Runner
+const BASE_URL = BASE_URL_EC2;    // if backend run on AWS APP Runner
 //===================================================================
 
 
