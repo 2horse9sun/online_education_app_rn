@@ -22,20 +22,22 @@ const BASE_URL = BASE_URL_EC2;    // if backend run on AWS EC2
 
 
 // API routes
+const API_ROUTE_USER_ACCOUNT = "/user_account";
+const API_ROUTE_STUDENT = "/student";
 const API_ROUTE_COURSE = "/course";
 const API_ROUTE_LESSON = "/lesson";
 const API_ROUTE_ASSIGNMENT = "/assignment";
 const API_ROUTE_USER = "/user";
-const API_ROUTE_STUDENT = "/student";
 
 
 
 export default {
     APIPrefix: BASE_URL,
+    userAccountAPIPrefix: `${BASE_URL}${API_ROUTE_USER_ACCOUNT}`, 
+    studentAPIPrefix: `${BASE_URL}${API_ROUTE_STUDENT}`, 
     courseAPIPrefix: `${BASE_URL}${API_ROUTE_COURSE}`, 
     lessonAPIPrefix: `${BASE_URL}${API_ROUTE_LESSON}`, 
     assignmentAPIPrefix: `${BASE_URL}${API_ROUTE_ASSIGNMENT}`, 
     userAPIPrefix: `${BASE_URL}${API_ROUTE_USER}`, 
-    studentAPIPrefix: `${BASE_URL}${API_ROUTE_STUDENT}`
 
 };

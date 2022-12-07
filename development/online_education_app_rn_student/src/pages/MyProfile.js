@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
+import { Avatar } from 'react-native-paper';
 import AppbarHeader from '../components/AppbarHeader';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { getStudentInfoByStudentId } from '../api/StudentAPI';
+import { formatYear } from '../utils/DateHandler';
 
 /**
  * Profile page, showing all the necessary user information,
@@ -9,61 +13,60 @@ import Icon from 'react-native-vector-icons/FontAwesome';
  * 
  */
 
-// Mock data that is used in the application
-const mockUser = {
-    name: 'Alice',
-    studentNumber: 3576946,
-    year: {
-        starting: 2019,
-        ending: 2023,
-    },
-    class: '12a',
-    grade: 12,
-};
-
-
 const MyProfilePage = () => {
 
-    let gradeEnding;
-    switch (mockUser.grade) {
-        case 1:
-            gradeEnding = 'st';
-            break;
-        case 2:
-            gradeEnding = 'nd';
-            break;
-        case 3:
-            gradeEnding = 'rd';
-            break;
-        default: gradeEnding = 'th';
-    }
+    const [userData, setUserData] = useState({});
 
+    useEffect(() => {
+
+        async function fetchUserData() {
+            let userInfo = await AsyncStorage.getItem("user_info");
+            userInfo = JSON.parse(userInfo);
+
+            const studentInfoRes = await getStudentInfoByStudentId(userInfo.student_id);
+            const studentInfo = studentInfoRes.data;
+
+            setUserData({
+                firstName: studentInfo.first_name,
+                lastName: studentInfo.last_name,
+                studentNumber: studentInfo.student_number,
+                className: studentInfo.class_name,
+                classStartYear: formatYear(studentInfo.class_start_date),
+                classEndYear: formatYear(studentInfo.class_end_date),
+                avatarUrl: userInfo.avatarUrl,
+                grade: 12
+            });
+        }
+
+        fetchUserData();
+    }, []);
+    
     return (
         <View style={styles.container}>
             <AppbarHeader title="Profile" />
             {/** Icon */}
             <View style={styles.icon_container}>
-                <Icon name="user-circle" size={150} style={styles.icon} />
+                <Avatar.Image size={150} source={{uri: userData.avatarUrl}} />
             </View>
 
             {/* Student number  */}
             <Text style={styles.titleText}>
-                {mockUser.name}
+                {userData.firstName} {userData.lastName} 
             </Text>
             <Text style={styles.studentNu}>
-                Student No. {mockUser.studentNumber}
+                Student No. {userData.studentNumber}
             </Text>
 
             {/* Class information  */}
             <View style={ styles.infoContainer}>
                 <Text style={styles.infoText}>
-                    Year: {mockUser.year.starting} - {mockUser.year.ending}
+                    Year: {userData.classStartYear} - {userData.classEndYear}
                 </Text >
                 <Text style={styles.infoText}>
-                    Class: {mockUser.class}
+                    Class: {userData.className}
                 </Text>
                 <Text style={styles.infoText}>
-                    Grade: {mockUser.grade}{gradeEnding} grade
+                    Grade: {userData.grade}
                 </Text>
             </View>
         </View>
