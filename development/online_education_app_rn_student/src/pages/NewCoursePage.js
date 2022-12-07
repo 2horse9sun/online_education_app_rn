@@ -7,7 +7,7 @@ import {
     enGB,
     registerTranslation,
 } from 'react-native-paper-dates'
-import { addCourse } from '../dao/CourseDao';
+import { addCourse } from '../api/CourseAPI';
 
 const NewCoursePage = ({ navigation }) => {
     // Data

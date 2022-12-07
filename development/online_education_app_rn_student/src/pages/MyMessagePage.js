@@ -6,9 +6,9 @@ import { truncate } from '../utils/StringUtil';
 import Entypo from 'react-native-vector-icons/Entypo';
 import { formatDate } from '../utils/DateUtil';
 import DocumentPicker from 'react-native-document-picker';
-import { addCourse, getCourseListByStudentId, getAllCourseListByStudentId, getCourseDetailByCourseId } from '../dao/CourseDao';
-import { getAllAssignmentListByStudentIdAndCourseId, getAssignmentDetailByStudentIdAndAssignmentId, getAllRecentAssignmentListByStudentId, getAllAssignmentListByStudentId, addAssignment  } from '../dao/AssignmentDao';
-import { getAllLessonListByCourseId, getLessonDetailByLessonId, addLesson } from '../dao/LessonDao';
+import { addCourse, getCourseListByStudentId, getAllCourseListByStudentId, getCourseDetailByCourseId } from '../api/CourseAPI';
+import { getAllAssignmentListByStudentIdAndCourseId, getAssignmentDetailByStudentIdAndAssignmentId, getAllRecentAssignmentListByStudentId, getAllAssignmentListByStudentId, addAssignment  } from '../api/AssignmentAPI';
+import { getAllLessonListByCourseId, getLessonDetailByLessonId, addLesson } from '../api/LessonAPI';
 
 
 type Props = {};

@@ -6,7 +6,7 @@ import { truncate } from '../utils/StringUtil';
 import Entypo from 'react-native-vector-icons/Entypo';
 import { formatDate } from '../utils/DateUtil';
 import AppbarHeader from '../components/AppbarHeader';
-import { getAllAssignmentListByStudentId } from '../dao/AssignmentDao';
+import { getAllAssignmentListByStudentId } from '../api/AssignmentAPI';
 
 // TODO! CHANGE ASSIGNMENT PAGE TO TWO DIFFERENT PAGES
 // PROGRESS PAGE AND DONE PAGE!

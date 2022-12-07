@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, ScrollView } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Text, ActivityIndicator, Button } from 'react-native-paper';
-import { getCourseDetailByCourseId } from '../dao/CourseDao';
+import { getCourseDetailByCourseId } from '../api/CourseAPI';
 
 
 

@@ -17,7 +17,7 @@ const BASE_URL_EC2 = `${PROTOCOL_HTTP}${EC2_HOSTNAME}:${PORT}${API_PREFIX}`;
 //===================================================================
 // const BASE_URL = BASE_URL_LOCALHOST;        // if backend run on localhost
 // const BASE_URL = BASE_URL_APP_RUNNER;    // if backend run on AWS APP Runner
-const BASE_URL = BASE_URL_EC2;    // if backend run on AWS APP Runner
+const BASE_URL = BASE_URL_EC2;    // if backend run on AWS EC2
 //===================================================================
 
 

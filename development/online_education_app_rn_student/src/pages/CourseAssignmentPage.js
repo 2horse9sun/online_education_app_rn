@@ -6,7 +6,7 @@ import { truncate } from '../utils/StringUtil';
 import Entypo from 'react-native-vector-icons/Entypo';
 import { formatDate } from '../utils/DateUtil';
 import AppbarHeader from '../components/AppbarHeader';
-import {getAllAssignmentListByStudentIdAndCourseId} from '../dao/AssignmentDao';
+import {getAllAssignmentListByStudentIdAndCourseId} from '../api/AssignmentAPI';
 
 
 
