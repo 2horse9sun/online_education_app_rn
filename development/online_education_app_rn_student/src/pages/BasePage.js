@@ -1,33 +1,39 @@
-import React, {Component} from 'react';
+import React, { useState, useEffect } from 'react';
 import AppBottomNavigation from '../navigation/AppBottomNavigation';
 import {Image, StyleSheet, Text, TouchableOpacity, View, SafeAreaView} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import MyCoursePage from './MyCoursePage';
+import {getUserInfoByUserId} from '../api/UserAccountAPI';
 
-type Props = {};
 
-class BasePage extends Component<Props> {
-    constructor(props) {
-        super(props);
-        // mock user data
-        AsyncStorage.setItem('user_info', JSON.stringify({
-            user_id: 1,
-            student_id: 1,
-            teacher_id: 1
-        }))
-        .catch(e => {
-            console.log(e);
-        })
-    }
+const BasePage = ({ navigation }) => {
 
-    render() {
-        return (
+    useEffect(() => {
+
+        async function fetchData() {
+            const userInfoRes = await getUserInfoByUserId(1);
+            const userInfo = userInfoRes.data;
+            await AsyncStorage.setItem('user_info', JSON.stringify({
+                user_id: userInfo.user_id,
+                username: userInfo.username,
+                avatarUrl: userInfo.avatar,
+                role: userInfo.role,
+                student_id: userInfo.profile_id,
+                teacher_id: 1 // for test
+            }))
+
+        }
+
+        fetchData();
+    }, []);
+
+    return (
             <SafeAreaView style={styles.container}>
                 <AppBottomNavigation/>
             </SafeAreaView>
-        );
-    }
-}
+    )
+};
+
+
 
 const styles = StyleSheet.create({
     container: {
